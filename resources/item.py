@@ -19,7 +19,7 @@ class Item(Resource):
         help = "Every item need a store id."
         )
 
-    # @jwt_required()
+    @jwt_required()
     def get(self, name):
         item = ItemModel.find_by_name(name)
         if item:
@@ -44,7 +44,7 @@ class Item(Resource):
             return {'message':'Item deleted'},200
         return {'message':'Item not found'},400
         
-    # @jwt_required()
+    @jwt_required()
     def put(self,name): #can be use for create or update items
         data = Item.parse.parse_args() #reading data send by the browser 
         item = ItemModel.find_by_name(name)
